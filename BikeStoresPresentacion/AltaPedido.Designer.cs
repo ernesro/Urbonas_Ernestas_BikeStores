@@ -55,29 +55,38 @@
             anadirProductoBtn = new Button();
             eliminarProductoBtn = new Button();
             label16 = new Label();
-            precioSeleccionadoTb = new TextBox();
             label17 = new Label();
-            cantidadTb = new TextBox();
             label18 = new Label();
-            descuentoTb = new TextBox();
             label19 = new Label();
             label20 = new Label();
-            totalSeleccionadoTb = new TextBox();
             label21 = new Label();
-            stockTb = new TextBox();
             label22 = new Label();
-            totalTb = new TextBox();
             label23 = new Label();
             label24 = new Label();
             label25 = new Label();
-            textBox1 = new TextBox();
             label26 = new Label();
             label27 = new Label();
-            totalMasIvaTb = new TextBox();
             label28 = new Label();
             darAltaPedidoBtn = new Button();
             shippedCkb = new CheckBox();
+            modificarProductoBtn = new Button();
+            precioSeleccionadoTb = new NumericUpDown();
+            descuentoTb = new NumericUpDown();
+            cantidadTb = new NumericUpDown();
+            stockTb = new NumericUpDown();
+            totalSeleccionadoTb = new NumericUpDown();
+            totalMasIvaTb = new NumericUpDown();
+            ivaTb = new NumericUpDown();
+            totalTb = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)productosDgv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)precioSeleccionadoTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)descuentoTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cantidadTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)stockTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)totalSeleccionadoTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)totalMasIvaTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ivaTb).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)totalTb).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -329,6 +338,7 @@
             productosDgv.RowTemplate.Height = 25;
             productosDgv.Size = new Size(767, 471);
             productosDgv.TabIndex = 30;
+            productosDgv.CellClick += productosDgv_CellClick;
             // 
             // label15
             // 
@@ -352,12 +362,13 @@
             // 
             // eliminarProductoBtn
             // 
-            eliminarProductoBtn.Location = new Point(1013, 328);
+            eliminarProductoBtn.Location = new Point(1047, 328);
             eliminarProductoBtn.Name = "eliminarProductoBtn";
             eliminarProductoBtn.Size = new Size(160, 38);
             eliminarProductoBtn.TabIndex = 33;
             eliminarProductoBtn.Text = "Eliminar Producto Seleccionado";
             eliminarProductoBtn.UseVisualStyleBackColor = true;
+            eliminarProductoBtn.Click += eliminarProductoBtn_Click;
             // 
             // label16
             // 
@@ -369,13 +380,6 @@
             label16.TabIndex = 38;
             label16.Text = "Precio de Producto Seleccionado : ";
             // 
-            // precioSeleccionadoTb
-            // 
-            precioSeleccionadoTb.Location = new Point(1018, 393);
-            precioSeleccionadoTb.Name = "precioSeleccionadoTb";
-            precioSeleccionadoTb.Size = new Size(155, 23);
-            precioSeleccionadoTb.TabIndex = 39;
-            // 
             // label17
             // 
             label17.AutoSize = true;
@@ -386,13 +390,6 @@
             label17.TabIndex = 40;
             label17.Text = "€";
             // 
-            // cantidadTb
-            // 
-            cantidadTb.Location = new Point(871, 422);
-            cantidadTb.Name = "cantidadTb";
-            cantidadTb.Size = new Size(123, 23);
-            cantidadTb.TabIndex = 42;
-            // 
             // label18
             // 
             label18.AutoSize = true;
@@ -402,13 +399,6 @@
             label18.Size = new Size(75, 21);
             label18.TabIndex = 41;
             label18.Text = "Cantidad : ";
-            // 
-            // descuentoTb
-            // 
-            descuentoTb.Location = new Point(1018, 450);
-            descuentoTb.Name = "descuentoTb";
-            descuentoTb.Size = new Size(155, 23);
-            descuentoTb.TabIndex = 44;
             // 
             // label19
             // 
@@ -430,14 +420,6 @@
             label20.TabIndex = 47;
             label20.Text = "€";
             // 
-            // totalSeleccionadoTb
-            // 
-            totalSeleccionadoTb.Location = new Point(1018, 479);
-            totalSeleccionadoTb.Name = "totalSeleccionadoTb";
-            totalSeleccionadoTb.ReadOnly = true;
-            totalSeleccionadoTb.Size = new Size(155, 23);
-            totalSeleccionadoTb.TabIndex = 46;
-            // 
             // label21
             // 
             label21.AutoSize = true;
@@ -447,14 +429,6 @@
             label21.Size = new Size(213, 21);
             label21.TabIndex = 45;
             label21.Text = "Total del Producto Seleccionado : ";
-            // 
-            // stockTb
-            // 
-            stockTb.Location = new Point(1102, 422);
-            stockTb.Name = "stockTb";
-            stockTb.ReadOnly = true;
-            stockTb.Size = new Size(102, 23);
-            stockTb.TabIndex = 49;
             // 
             // label22
             // 
@@ -466,18 +440,11 @@
             label22.TabIndex = 48;
             label22.Text = "Stock Actual : ";
             // 
-            // totalTb
-            // 
-            totalTb.Location = new Point(893, 565);
-            totalTb.Name = "totalTb";
-            totalTb.Size = new Size(155, 23);
-            totalTb.TabIndex = 51;
-            // 
             // label23
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Sitka Banner", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label23.Location = new Point(799, 563);
+            label23.Location = new Point(801, 628);
             label23.Name = "label23";
             label23.Size = new Size(51, 21);
             label23.TabIndex = 50;
@@ -487,7 +454,7 @@
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Sitka Banner", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label24.Location = new Point(1064, 556);
+            label24.Location = new Point(1056, 622);
             label24.Name = "label24";
             label24.Size = new Size(27, 32);
             label24.TabIndex = 52;
@@ -497,24 +464,17 @@
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Sitka Banner", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label25.Location = new Point(1064, 585);
+            label25.Location = new Point(1056, 651);
             label25.Name = "label25";
             label25.Size = new Size(27, 32);
             label25.TabIndex = 55;
             label25.Text = "€";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(893, 594);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(155, 23);
-            textBox1.TabIndex = 54;
-            // 
             // label26
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Sitka Banner", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label26.Location = new Point(799, 592);
+            label26.Location = new Point(801, 657);
             label26.Name = "label26";
             label26.Size = new Size(76, 21);
             label26.TabIndex = 53;
@@ -524,24 +484,17 @@
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Sitka Banner", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label27.Location = new Point(1064, 629);
+            label27.Location = new Point(1056, 695);
             label27.Name = "label27";
             label27.Size = new Size(27, 32);
             label27.TabIndex = 58;
             label27.Text = "€";
             // 
-            // totalMasIvaTb
-            // 
-            totalMasIvaTb.Location = new Point(893, 638);
-            totalMasIvaTb.Name = "totalMasIvaTb";
-            totalMasIvaTb.Size = new Size(155, 23);
-            totalMasIvaTb.TabIndex = 57;
-            // 
             // label28
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Sitka Banner", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label28.Location = new Point(799, 636);
+            label28.Location = new Point(801, 701);
             label28.Name = "label28";
             label28.Size = new Size(88, 21);
             label28.TabIndex = 56;
@@ -566,34 +519,118 @@
             shippedCkb.UseVisualStyleBackColor = true;
             shippedCkb.CheckedChanged += shippedCkb_CheckedChanged;
             // 
+            // modificarProductoBtn
+            // 
+            modificarProductoBtn.Location = new Point(799, 513);
+            modificarProductoBtn.Name = "modificarProductoBtn";
+            modificarProductoBtn.Size = new Size(160, 40);
+            modificarProductoBtn.TabIndex = 61;
+            modificarProductoBtn.Text = "Modificar Producto Seleccionado";
+            modificarProductoBtn.UseVisualStyleBackColor = true;
+            // 
+            // precioSeleccionadoTb
+            // 
+            precioSeleccionadoTb.Location = new Point(1018, 394);
+            precioSeleccionadoTb.Name = "precioSeleccionadoTb";
+            precioSeleccionadoTb.Size = new Size(155, 23);
+            precioSeleccionadoTb.TabIndex = 62;
+            precioSeleccionadoTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // descuentoTb
+            // 
+            descuentoTb.Location = new Point(1018, 451);
+            descuentoTb.Name = "descuentoTb";
+            descuentoTb.Size = new Size(155, 23);
+            descuentoTb.TabIndex = 63;
+            descuentoTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // cantidadTb
+            // 
+            cantidadTb.Location = new Point(880, 423);
+            cantidadTb.Name = "cantidadTb";
+            cantidadTb.Size = new Size(127, 23);
+            cantidadTb.TabIndex = 65;
+            cantidadTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // stockTb
+            // 
+            stockTb.Enabled = false;
+            stockTb.Location = new Point(1104, 423);
+            stockTb.Name = "stockTb";
+            stockTb.ReadOnly = true;
+            stockTb.Size = new Size(102, 23);
+            stockTb.TabIndex = 66;
+            stockTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // totalSeleccionadoTb
+            // 
+            totalSeleccionadoTb.Enabled = false;
+            totalSeleccionadoTb.Location = new Point(1018, 480);
+            totalSeleccionadoTb.Name = "totalSeleccionadoTb";
+            totalSeleccionadoTb.ReadOnly = true;
+            totalSeleccionadoTb.Size = new Size(155, 23);
+            totalSeleccionadoTb.TabIndex = 67;
+            totalSeleccionadoTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // totalMasIvaTb
+            // 
+            totalMasIvaTb.Enabled = false;
+            totalMasIvaTb.Location = new Point(895, 704);
+            totalMasIvaTb.Name = "totalMasIvaTb";
+            totalMasIvaTb.ReadOnly = true;
+            totalMasIvaTb.Size = new Size(155, 23);
+            totalMasIvaTb.TabIndex = 68;
+            totalMasIvaTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // ivaTb
+            // 
+            ivaTb.Enabled = false;
+            ivaTb.Location = new Point(895, 660);
+            ivaTb.Name = "ivaTb";
+            ivaTb.ReadOnly = true;
+            ivaTb.Size = new Size(155, 23);
+            ivaTb.TabIndex = 69;
+            ivaTb.TextAlign = HorizontalAlignment.Right;
+            // 
+            // totalTb
+            // 
+            totalTb.Enabled = false;
+            totalTb.Location = new Point(895, 631);
+            totalTb.Name = "totalTb";
+            totalTb.ReadOnly = true;
+            totalTb.Size = new Size(155, 23);
+            totalTb.TabIndex = 70;
+            totalTb.TextAlign = HorizontalAlignment.Right;
+            // 
             // AltaPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1219, 811);
+            Controls.Add(totalTb);
+            Controls.Add(ivaTb);
+            Controls.Add(totalMasIvaTb);
+            Controls.Add(totalSeleccionadoTb);
+            Controls.Add(stockTb);
+            Controls.Add(cantidadTb);
+            Controls.Add(descuentoTb);
+            Controls.Add(precioSeleccionadoTb);
+            Controls.Add(modificarProductoBtn);
             Controls.Add(shippedCkb);
             Controls.Add(darAltaPedidoBtn);
             Controls.Add(label27);
-            Controls.Add(totalMasIvaTb);
             Controls.Add(label28);
             Controls.Add(label25);
-            Controls.Add(textBox1);
             Controls.Add(label26);
             Controls.Add(label24);
-            Controls.Add(totalTb);
             Controls.Add(label23);
-            Controls.Add(stockTb);
             Controls.Add(label22);
             Controls.Add(label20);
-            Controls.Add(totalSeleccionadoTb);
             Controls.Add(label21);
-            Controls.Add(descuentoTb);
             Controls.Add(label19);
-            Controls.Add(cantidadTb);
             Controls.Add(label18);
             Controls.Add(label17);
-            Controls.Add(precioSeleccionadoTb);
             Controls.Add(label16);
             Controls.Add(eliminarProductoBtn);
             Controls.Add(anadirProductoBtn);
@@ -630,6 +667,14 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AltaPedido";
             ((System.ComponentModel.ISupportInitialize)productosDgv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)precioSeleccionadoTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)descuentoTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cantidadTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)stockTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)totalSeleccionadoTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)totalMasIvaTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ivaTb).EndInit();
+            ((System.ComponentModel.ISupportInitialize)totalTb).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -668,27 +713,28 @@
         private Button anadirProductoBtn;
         private Button eliminarProductoBtn;
         private Label label16;
-        private TextBox precioSeleccionadoTb;
         private Label label17;
-        private TextBox cantidadTb;
         private Label label18;
-        private TextBox descuentoTb;
         private Label label19;
         private Label label20;
-        private TextBox totalSeleccionadoTb;
         private Label label21;
-        private TextBox stockTb;
         private Label label22;
-        private TextBox totalTb;
         private Label label23;
         private Label label24;
         private Label label25;
-        private TextBox textBox1;
         private Label label26;
         private Label label27;
-        private TextBox totalMasIvaTb;
         private Label label28;
         private Button darAltaPedidoBtn;
         private CheckBox shippedCkb;
+        private Button modificarProductoBtn;
+        private NumericUpDown precioSeleccionadoTb;
+        private NumericUpDown descuentoTb;
+        private NumericUpDown cantidadTb;
+        private NumericUpDown stockTb;
+        private NumericUpDown totalSeleccionadoTb;
+        private NumericUpDown totalMasIvaTb;
+        private NumericUpDown ivaTb;
+        private NumericUpDown totalTb;
     }
 }

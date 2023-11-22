@@ -13,14 +13,9 @@ namespace EEFBikeStores {
         }
 
         public IList<Order> Listar() {
-            context = new BikeStoresContext();
+            //context = new BikeStoresContext();
             // Return the list of data from the database
-            var data = context.Orders
-            .Include(o => o.Customer)
-            .Include(o => o.OrderItems)
-            .Include(o => o.Staff)
-            .Include(o => o.Store)
-            .ToList();
+            var data = context.Orders.ToList();
 
             return data;
 

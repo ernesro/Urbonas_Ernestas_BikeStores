@@ -2,31 +2,26 @@
 using Microsoft.EntityFrameworkCore;
 
 ///<author> Ernestas Urbonas </author>
-namespace EEFBikeStores
-{
-    public class CategoryDAO : IDisposable
-    {
+namespace EEFBikeStores {
+    public class CategoryDAO : IDisposable {
         bool disposed;
+        private BikeStoresContext context;
 
-        public CategoryDAO()
-        {
+        public CategoryDAO() {
+            context = new BikeStoresContext();
             disposed = false;
         }
 
-        static public IList<Category> Listar()
-        {
-            using (var context = new BikeStoresContext())
-            {
-                // Return the list of data from the database
-                var data = context.Categories.ToList();
-                return data;
-            }
+        public IList<Category> Listar() {
+
+            // Return the list of data from the database
+            var data = context.Categories.ToList();
+            return data;
+
         }
 
-        public Category Listar(String ID)
-        {
-            using (var _context = new BikeStoresContext())
-            {
+        public Category Listar(String ID) {
+            using (var _context = new BikeStoresContext()) {
                 var query = from st in _context.Categories
                             where st.CategoryId.ToString() == ID
                             select st;
@@ -36,47 +31,39 @@ namespace EEFBikeStores
             }
         }
 
-        public void Insertar(Category dato)
-        {
-            using (var context = new BikeStoresContext())
-            {
+        public void Insertar(Category dato) {
+            using (var context = new BikeStoresContext()) {
                 context.Entry(dato).State = EntityState.Added;
                 context.SaveChanges();
             }
         }
 
-        public void Actualizar(Category modificado)
-        {
-            using (var context = new BikeStoresContext())
-            {
+        public void Actualizar(Category modificado) {
+            using (var context = new BikeStoresContext()) {
                 context.Entry(modificado).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
 
-        public void Borrar(Category dato)
-        {
-            using (var context = new BikeStoresContext())
-            {
+        public void Borrar(Category dato) {
+            using (var context = new BikeStoresContext()) {
                 context.Entry(dato).State = EntityState.Deleted;
                 context.SaveChanges();
             }
         }
 
-        public void Dispose()
-        {
+        public void Dispose() {
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
 
         // Protected implementation of Dispose pattern.
-        protected virtual void Dispose(bool disposing)
-        {
+        protected virtual void Dispose(bool disposing) {
             if (disposed)
                 return;
 
-            if (disposing)
-            {
+            if (disposing) {
+                context.Dispose();
                 // Free any other managed objects here.
                 //Liberar recursos no manejados como ficheros, conexiones a bd, etc.
             }

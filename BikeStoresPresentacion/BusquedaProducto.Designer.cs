@@ -50,7 +50,7 @@
             categoriaCb.Name = "categoriaCb";
             categoriaCb.Size = new Size(178, 23);
             categoriaCb.TabIndex = 2;
-            categoriaCb.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            categoriaCb.SelectedIndexChanged += categoriaCb_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -76,6 +76,7 @@
             productoTb.Name = "productoTb";
             productoTb.Size = new Size(465, 23);
             productoTb.TabIndex = 5;
+            productoTb.TextChanged += productoTb_TextChanged;
             // 
             // dataGridView1
             // 
@@ -85,6 +86,8 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(816, 408);
             dataGridView1.TabIndex = 6;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // button1
             // 
@@ -94,6 +97,7 @@
             button1.TabIndex = 7;
             button1.Text = "Seleccionar Producto";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // BusquedaProducto
             // 

@@ -77,7 +77,7 @@ namespace BikeStoresPresentacion {
         private void okBtn_Click(object sender, EventArgs e) {
             if (customerSeleccion is not null) {
                 AltaPedido form = new AltaPedido(empleado, customerSeleccion);
-                form.Show();
+                form.ShowDialog();
                 Hide();
                 form.FormClosed += (sender, e) => {
                     Close();
@@ -105,7 +105,7 @@ namespace BikeStoresPresentacion {
                     }
                 }
                 AltaPedido form = new AltaPedido(empleado, customerSeleccion);
-                form.Show();
+                form.ShowDialog();
                 Hide();
                 form.FormClosed += (sender, e) => {
                     Close();

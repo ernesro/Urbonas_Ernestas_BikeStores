@@ -2,31 +2,24 @@
 using Microsoft.EntityFrameworkCore;
 
 ///<author> Ernestas Urbonas </author>
-namespace EEFBikeStores
-{
-    public class BrandDAO : IDisposable
-    {
+namespace EEFBikeStores {
+    public class BrandDAO : IDisposable {
+        private BikeStoresContext context;
         bool disposed;
 
-        public BrandDAO()
-        {
+        public BrandDAO() {
+            context = new BikeStoresContext();
             disposed = false;
         }
 
-        static public IList<Brand> Listar()
-        {
-            using (var context = new BikeStoresContext())
-            {
-                // Return the list of data from the database
-                var data = context.Brands.ToList();
-                return data;
-            }
+        public IList<Brand> Listar() {
+            // Return the list of data from the database
+            var data = context.Brands.ToList();
+            return data;
         }
 
-        public Brand Listar(String ID)
-        {
-            using (var _context = new BikeStoresContext())
-            {
+        public Brand Listar(String ID) {
+            using (var _context = new BikeStoresContext()) {
                 var query = from st in _context.Brands
                             where st.BrandId.ToString() == ID
                             select st;
@@ -36,47 +29,38 @@ namespace EEFBikeStores
             }
         }
 
-        public void Insertar(Brand dato)
-        {
-            using (var context = new BikeStoresContext())
-            {
+        public void Insertar(Brand dato) {
+            using (var context = new BikeStoresContext()) {
                 context.Entry(dato).State = EntityState.Added;
                 context.SaveChanges();
             }
         }
 
-        public void Actualizar(Brand modificado)
-        {
-            using (var context = new BikeStoresContext())
-            {
+        public void Actualizar(Brand modificado) {
+            using (var context = new BikeStoresContext()) {
                 context.Entry(modificado).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
 
-        public void Borrar(Brand dato)
-        {
-            using (var context = new BikeStoresContext())
-            {
+        public void Borrar(Brand dato) {
+            using (var context = new BikeStoresContext()) {
                 context.Entry(dato).State = EntityState.Deleted;
                 context.SaveChanges();
             }
         }
 
-        public void Dispose()
-        {
+        public void Dispose() {
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
 
         // Protected implementation of Dispose pattern.
-        protected virtual void Dispose(bool disposing)
-        {
+        protected virtual void Dispose(bool disposing) {
             if (disposed)
                 return;
 
-            if (disposing)
-            {
+            if (disposing) {
                 // Free any other managed objects here.
                 //Liberar recursos no manejados como ficheros, conexiones a bd, etc.
             }

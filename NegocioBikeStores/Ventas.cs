@@ -74,10 +74,38 @@ namespace NegocioBikeStores {
             }
         }
 
+        public List<Brand> ListarMarcas()        //Lista de empleados
+        {
+            using (var context = new BrandDAO()) {
+                var brands = context.Listar();
+                return brands.ToList();
+            }
+        }
         public List<Customer> ListarCustomers() {
             using (var context = new CustomerDAO()) {
                 var clientes = context.Listar();
                 return clientes.ToList();
+            }
+        }
+
+        public List<Category> ListarCategorias() {
+            using (var context = new CategoryDAO()) {
+                var categoria = context.Listar();
+                return categoria.ToList();
+            }
+        }
+
+        public List<Product> ListarProductos() {
+            using (var context = new ProductDAO()) {
+                var producto = context.Listar();
+                return producto.ToList();
+            }
+        }
+
+        public List<Stock> ListarStock() {
+            using (var context = new StockDAO()) {
+                var stock = context.Listar();
+                return stock.ToList();
             }
         }
 
