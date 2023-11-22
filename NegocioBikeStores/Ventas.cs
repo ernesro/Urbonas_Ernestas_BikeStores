@@ -6,7 +6,7 @@ using System.Text;
 ///<author> Ernestas Urbonas </author>
 
 namespace NegocioBikeStores {
-    public class Ventas {
+    public class Ventas : IDisposable {
         bool disposed;
         public Ventas() {
             disposed = false;

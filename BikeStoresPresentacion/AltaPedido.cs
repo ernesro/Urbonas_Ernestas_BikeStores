@@ -37,7 +37,10 @@ namespace BikeStoresPresentacion {
             dataTable.Columns.Add("Producto", typeof(string));
             dataTable.Columns.Add("Cantidad", typeof(string));
             dataTable.Columns.Add("Descuento", typeof(string));
-            dataTable.Columns.Add("Precio", typeof(string));
+            dataTable.Columns.Add("Precio Total", typeof(string));
+            //dataTable.Columns.Add("Precio Individual", typeof(string));
+
+            //dataTable.Columns.Add("", typeof(string));
 
             CargarEmpleado();
             CargarCliente();
@@ -122,12 +125,11 @@ namespace BikeStoresPresentacion {
                 ActualizarGrid();
                 CargarDatosProductoSeleccionado(item);
                 ActualizarTotalPedido();
-
+                ActualizarStock(1, item.Product);
                 stockTb.Value = (decimal)GetStock(item.Product);
 
             } else
-                MessageBox.Show("Tienes que seleccionar un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("No hay stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void eliminarProductoBtn_Click(object sender, EventArgs e) {
@@ -136,19 +138,16 @@ namespace BikeStoresPresentacion {
                 ActualizarGrid();
                 ActualizarTotalPedido();
                 ClearDatosPedido();
-            }
-
+            } else
+                MessageBox.Show("Tienes que seleccionar un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool VerificarStock(int cantidad, Product producto) {
             bool hayStock = false;
-            int? stock = GetStock(producto);
-
             foreach (Stock s in stockTiendaActual) {
                 if (s.ProductId.Equals(producto.ProductId)) {
-                    if (s.Quantity > 0) {
+                    if (s.Quantity >= cantidad) {
                         hayStock = true;
-                        s.Quantity -= cantidad;
                     }
                     break;
                 }
@@ -156,12 +155,22 @@ namespace BikeStoresPresentacion {
             return hayStock;
         }
 
+        private void ActualizarStock(int cantidad, Product producto) {
+            foreach (Stock s in stockTiendaActual) {
+                if (s.ProductId.Equals(producto.ProductId)) {
+                    if (s.Quantity >= cantidad) {
+                        s.Quantity -= cantidad;
+                    }
+                    break;
+                }
+            }
+        }
+
         private int? GetStock(Product item) {
             int? stock = 0;
             foreach (var s in stockTiendaActual) {
                 if (item.ProductId.Equals(s.ProductId)) {
                     stock = s.Quantity;
-                    MessageBox.Show(stock.ToString());
                 }
             }
             if (stock is null) {
@@ -180,7 +189,7 @@ namespace BikeStoresPresentacion {
                 fila["Producto"] = dato.Product.ProductName;
                 fila["Cantidad"] = dato.Quantity.ToString();
                 fila["Descuento"] = dato.Discount.ToString();
-                fila["Precio"] = dato.ListPrice.ToString();
+                fila["Precio Total"] = dato.ListPrice.ToString();
 
                 dataTable.Rows.Add(fila);
                 dataView = new DataView(dataTable);
@@ -193,15 +202,11 @@ namespace BikeStoresPresentacion {
         }
 
         private void CargarDatosProductoSeleccionado(OrderItem item) {
+
             precioSeleccionadoTb.Value = item.Product.ListPrice;
             cantidadTb.Value = item.Quantity;
             descuentoTb.Value = item.Discount;
-
-            decimal precioSinDescuento = precioSeleccionadoTb.Value * cantidadTb.Value;
-            decimal decuento = precioSinDescuento * descuentoTb.Value;
-            decimal total = precioSinDescuento - decuento;
-
-            totalSeleccionadoTb.Value = total;
+            totalSeleccionadoTb.Value = item.ListPrice;
         }
 
         private void ActualizarTotalPedido() {
@@ -233,11 +238,33 @@ namespace BikeStoresPresentacion {
                     }
                 }
                 CargarDatosProductoSeleccionado(productoPedido);
+                stockTb.Value = (decimal)GetStock(productoPedido.Product);
             }
         }
 
         private void ClearDatosPedido() {
             totalSeleccionadoTb.Value = 0;
+            descuentoTb.Value = 0;
+            cantidadTb.Value = 0;
+            stockTb.Value = 0;
+            precioSeleccionadoTb.Value = 0;
+        }
+
+        private void modificarProductoBtn_Click(object sender, EventArgs e) {
+            if (productoPedido is not null) {
+                if (VerificarStock((int)cantidadTb.Value, productoPedido.Product)) {
+                    productoPedido.Quantity = (int)cantidadTb.Value;
+                    productoPedido.Discount = descuentoTb.Value;
+                    productoPedido.ListPrice = precioSeleccionadoTb.Value * productoPedido.Quantity - precioSeleccionadoTb.Value * productoPedido.Quantity * productoPedido.Discount;
+
+                    ActualizarGrid();
+                    ActualizarTotalPedido();
+                } else {
+                    MessageBox.Show("No hay suficiente Stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cantidadTb.Value = productoPedido.Quantity;
+                }
+            } else
+                MessageBox.Show("Tienes que seleccionar un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

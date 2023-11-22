@@ -527,6 +527,7 @@
             modificarProductoBtn.TabIndex = 61;
             modificarProductoBtn.Text = "Modificar Producto Seleccionado";
             modificarProductoBtn.UseVisualStyleBackColor = true;
+            modificarProductoBtn.Click += modificarProductoBtn_Click;
             // 
             // precioSeleccionadoTb
             // 
