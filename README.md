@@ -40,7 +40,38 @@ and it looks like this :
 
 <br>
 
-You can consult all the types of variables that you can replace in this [TABLE](##variable-type-list).
+You can consult all the types of variables that you can replace in this table.
+
+<table>
+  <tr>
+    <th> In the Java Class </th>
+    <th> In the Document .docx </th>
+  </tr>
+  <tr>
+    <td> 
+    	```java
+	    	private string example_String = "Example";
+     	```
+    </td>
+    <td> ${EXAMPLE_STRING} </td>
+  </tr>
+  <tr>
+    <td>Fila 2, Celda 1</td>
+    <td>Fila 2, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 3, Celda 1</td>
+    <td>Fila 3, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 4, Celda 1</td>
+    <td>Fila 4, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 5, Celda 1</td>
+    <td>Fila 5, Celda 2</td>
+  </tr>
+</table>
 
 <br>
 
@@ -73,35 +104,6 @@ With this two items we are ready.
 <br>
 
 To replace our variables 
-
-## VARIBLE TYPE LIST
-
-<table>
-  <tr>
-    <th> In the Java Class </th>
-    <th> In the Document .docx </th>
-  </tr>
-  <tr>
-    <td>Fila 1, Celda 1</td>
-    <td>Fila 1, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 2, Celda 1</td>
-    <td>Fila 2, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 3, Celda 1</td>
-    <td>Fila 3, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 4, Celda 1</td>
-    <td>Fila 4, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 5, Celda 1</td>
-    <td>Fila 5, Celda 2</td>
-  </tr>
-</table>
 
 
 		
