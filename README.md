@@ -15,6 +15,10 @@ You have a template witch is a **Word** document with variables which you want t
 The variables in the document should be like this :  
   
 > ${EXAMPLE}
+
+
+> [!CAUTION]
+> The document must have only the **.docx** extension, or it will not work
   
   	
 In this case our document is named `exampleDoc.docx`  
@@ -27,7 +31,7 @@ and it looks like this :
 You will then need a DTO **Object** that contains all the document data to replace in the template.  
 In this example we have the `ExampleTemplate.java` and looks like this :
 
-```
+```   
 		@Getter
 		@Setter
 		public class ExampleTemplate extends GenerableDocument
@@ -49,5 +53,4 @@ With this two items we are ready.
 To replace our variables 
 
 		
-
 
