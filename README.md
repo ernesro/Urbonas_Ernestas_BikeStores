@@ -19,8 +19,9 @@ The variables in the document should be like this :
 
 > [!CAUTION]
 > The document must have only the **.docx** extension, or it will not work
+
+
   
-  	
 In this case our document is named `exampleDoc.docx`  
 and it looks like this :  
   
