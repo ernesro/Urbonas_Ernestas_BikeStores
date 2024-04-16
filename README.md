@@ -75,7 +75,7 @@ With this two items we are ready.
 To replace our variables 
 
 [^1]: ## VARIBLE TYPE LIST
-**
+
 	<table>
 	  <tr>
 	    <th> In the **Java Class** </th>
@@ -102,7 +102,6 @@ To replace our variables
 	    <td>Fila 5, Celda 2</td>
 	  </tr>
 	</table>
- **
 
 
 		
