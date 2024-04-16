@@ -14,37 +14,39 @@ You will be able to generate and read your documents very easily.
 You have a template witch is a **Word** document with variables which you want to replace with your data.  
 The variables in the document should be like this :  
   
-> ```
-	${EXAMPLE}
+> ${EXAMPLE}
   
   	
 In this case our document is named `exampleDoc.docx`  
 and it looks like this :  
   
-> ``` 
-	This is a document and I want to replace this variable ${VARIABLE_EXAMPLE} and  
-	also this one ${NUMBER}.
+> This is a document and I want to replace this variable ${VARIABLE_EXAMPLE} and  
+  also this one ${NUMBER}.
   
   
 You will then need a DTO **Object** that contains all the document data to replace in the template.  
 In this example we have the `ExampleTemplate.java` and looks like this :
 
->  ```
-	@Getter
-	@Setter
-	public class ExampleTemplate extends GenerableDocument
-	{
-		private String variable_example = "(I am a replaced variable) ";
-		private Integer number = 69;
-	}
+```   @Getter
+		@Setter
+		public class ExampleTemplate extends GenerableDocument
+		{
+			private String variable_example = "(I am a replaced variable) ";
+			private Integer number = 69;
+		}
+```
 	
 	
 With this two items we are ready.  
   
   
+    
+    
   	
 ### THE REPLACEMENT
 		
 To replace our variables 
 
 		
+
+
