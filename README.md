@@ -39,6 +39,9 @@ and it looks like this :
   also this one ${NUMBER}.
 
 <br>
+
+You can consult all the types of variables that you can replace in this **list**[^1].
+
 <br>
 
 You will then need a DTO **Object** that contains all the document data to replace in the template.  
