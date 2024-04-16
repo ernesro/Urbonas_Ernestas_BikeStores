@@ -13,7 +13,8 @@ You will be able to generate and read your documents very easily.
 
 You have a template witch is a **Word** document with variables which you want to replace with your data.  
 The variables in the document should be like this :  
-  
+
+
 > ${EXAMPLE}
 
 
@@ -21,7 +22,7 @@ The variables in the document should be like this :
 > The document must have only the **.docx** extension, or it will not work
 
 
-  
+
 In this case our document is named `exampleDoc.docx`  
 and it looks like this :  
   
