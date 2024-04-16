@@ -76,32 +76,32 @@ To replace our variables
 
 [^1]: ## VARIBLE TYPE LIST
 
-<table>
-  <tr>
-    <th> In the **Java Class** </th>
-    <th> In the **Document .docx** </th>
-  </tr>
-  <tr>
-    <td>Fila 1, Celda 1</td>
-    <td>Fila 1, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 2, Celda 1</td>
-    <td>Fila 2, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 3, Celda 1</td>
-    <td>Fila 3, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 4, Celda 1</td>
-    <td>Fila 4, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 5, Celda 1</td>
-    <td>Fila 5, Celda 2</td>
-  </tr>
-</table>
+	<table>
+	  <tr>
+	    <th> In the **Java Class** </th>
+	    <th> In the **Document .docx** </th>
+	  </tr>
+	  <tr>
+	    <td>Fila 1, Celda 1</td>
+	    <td>Fila 1, Celda 2</td>
+	  </tr>
+	  <tr>
+	    <td>Fila 2, Celda 1</td>
+	    <td>Fila 2, Celda 2</td>
+	  </tr>
+	  <tr>
+	    <td>Fila 3, Celda 1</td>
+	    <td>Fila 3, Celda 2</td>
+	  </tr>
+	  <tr>
+	    <td>Fila 4, Celda 1</td>
+	    <td>Fila 4, Celda 2</td>
+	  </tr>
+	  <tr>
+	    <td>Fila 5, Celda 1</td>
+	    <td>Fila 5, Celda 2</td>
+	  </tr>
+	</table>
 
 
 		
