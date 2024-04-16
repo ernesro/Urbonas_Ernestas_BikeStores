@@ -27,7 +27,8 @@ and it looks like this :
 You will then need a DTO **Object** that contains all the document data to replace in the template.  
 In this example we have the `ExampleTemplate.java` and looks like this :
 
-```   @Getter
+```
+		@Getter
 		@Setter
 		public class ExampleTemplate extends GenerableDocument
 		{
