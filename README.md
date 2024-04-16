@@ -40,7 +40,7 @@ and it looks like this :
 
 <br>
 
-You can consult all the types of variables that you can replace in this **list**[^1].
+You can consult all the types of variables that you can replace in this **TABLE**[^1].
 
 <br>
 
@@ -74,7 +74,7 @@ With this two items we are ready.
 
 To replace our variables 
 
-## VARIBLE TYPE LIST
+## [^1]: VARIBLE TYPE LIST
 
 <table>
   <tr>
