@@ -54,7 +54,10 @@ In this example we have the `ExampleTemplate.java` and looks like this :
 		}
 ```
 
-<br>	
+<br>
+
+You can consult all the 
+
 <br>
 
 With this two items we are ready.  
@@ -67,6 +70,36 @@ With this two items we are ready.
 <br>
 
 To replace our variables 
+
+## VARIBLE TYPE LIST
+
+<table>
+  <tr>
+    <th> In the **Java Class** </th>
+    <th> In the **Document .docx** </th>
+  </tr>
+  <tr>
+    <td>Fila 1, Celda 1</td>
+    <td>Fila 1, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 2, Celda 1</td>
+    <td>Fila 2, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 3, Celda 1</td>
+    <td>Fila 3, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 4, Celda 1</td>
+    <td>Fila 4, Celda 2</td>
+  </tr>
+  <tr>
+    <td>Fila 5, Celda 1</td>
+    <td>Fila 5, Celda 2</td>
+  </tr>
+</table>
+
 
 		
 
