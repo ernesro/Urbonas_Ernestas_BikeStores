@@ -9,7 +9,7 @@ You will be able to generate and read your documents very easily.
 ## REPLACE ALL THE VARIBLES OF THE TEMPLATE
 
 
-###THE TEMPLATE
+### THE TEMPLATE
 
 You have a template witch is a **Word** document with variables which you want to replace with your data.  
 The variables in the document should be like this :  
@@ -43,7 +43,7 @@ With this two items we are ready.
   
   
   	
-###THE REPLACEMENT
+### THE REPLACEMENT
 		
 To replace our variables 
 
