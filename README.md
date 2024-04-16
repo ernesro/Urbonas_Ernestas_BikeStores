@@ -40,7 +40,7 @@ and it looks like this :
 
 <br>
 
-You can consult all the types of variables that you can replace in this [TABLE](#variable-type-list).
+You can consult all the types of variables that you can replace in this [TABLE](##variable-type-list).
 
 <br>
 
@@ -78,8 +78,8 @@ To replace our variables
 
 <table>
   <tr>
-    <th> In the **Java Class** </th>
-    <th> In the **Document .docx** </th>
+    <th> In the Java Class </th>
+    <th> In the Document .docx </th>
   </tr>
   <tr>
     <td>Fila 1, Celda 1</td>
