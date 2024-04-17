@@ -336,7 +336,7 @@ We need a `File object` of the template and a `Map` containg the `name of the va
 
 
 ```java
-	String example = "HELLO";
+	String exampleString = "HELLO";
 
 	private TableDTO exampleTable = TableDTO.builder ( )		// This is the previous example of table
 					.headers ( headers )
@@ -344,14 +344,14 @@ We need a `File object` of the template and a `Map` containg the `name of the va
 					.data ( data )
 					.build ( );
 
-	private ListDTO exampleList = ListDTO.builder ( )		// This is the previous example of list
+	private ListDTO listDto = ListDTO.builder ( )		// This is the previous example of list
 					.lines ( exampleList )
 					.build ( );
 
 	private Map < String, Object > variables = new HashMap <> ( );	// Put the DTOs in the map
-	variables.put("EXAMPLE", example);
-	variables.put("EXAMPLE_TABLE", example);
-	variables.put("EXAMPLE_LIST", example);
+	variables.put("EXAMPLE_STRING", exampleString);
+	variables.put("EXAMPLE_TABLE", exampleTable);
+	variables.put("LIST_DTO", listDto);
 
 	DocumentDTO EXAMPLE = DocumentDTO.builder ( )
 					.document ( FileUtils.loadFileFromResources ( "./templateResources/document.docx" ) )
@@ -359,7 +359,7 @@ We need a `File object` of the template and a `Map` containg the `name of the va
 					.build ( );
 ```
 > [!CAUTION]
-> If our `ListDTO` in the `DocumentDTO` is named `exampleList`, in the `.docx file` must be `${EXAMPLE_LIST}` or `${EXAMPLELIST}`. And in the `Map` the string containing the name of the varible must be like `EXAMPLE_LIST` or `EXAMPLELIST`.
+> If our `TableDTO` in the `DocumentDTO` is named `exampleTable`, in the `.docx file` must be `${EXAMPLE_TABLE}` or `${EXAMPLETABLE}`. And in the `Map` the string containing the name of the varible must be like `EXAMPLE_TABLE` or `EXAMPLETABLE`.
 
 Then in the .docx output our `${EXAMPLE}`will be replaced with all the content of `document.docx` and all the `document.docx` variables will be replaced also with the `map` content.
 
