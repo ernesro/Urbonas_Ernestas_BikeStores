@@ -207,7 +207,10 @@ We declare our ListDTO :
 
 <br>
 
-Then in the .docx output after replace our ${EXAMPLE} we get this result:  
+Then in the .docx output after replace our ${EXAMPLE} we get this result:   
+```
 
   ### Title Example
   This is a text example
+
+```
