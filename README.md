@@ -209,5 +209,5 @@ We declare our ListDTO :
 
 Then in the .docx output after replace our ${EXAMPLE} we get this result:
 
-> <span style="font-size:3em;">Title Example</span>  
-> This a a text example
+  <span style="font-size:3em;">Title Example</span>  
+  This is a text example
