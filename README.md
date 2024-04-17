@@ -86,6 +86,32 @@ Then we need a **File** object with the current template.
 ```
 
 In this case our template is located in a folder called templates within the project resources folder.
+To load the file in all these cases we have a utility class, you can create your own or create one like this and use it:
+
+```java
+	@UtilityClass
+	@Slf4j
+	public class FileUtils
+	{
+		public File loadFileFromResources ( String fileFullPath )
+		{
+			File output = null;
+	
+			try
+			{
+				output = new File ( FileUtils.class.getClassLoader ( )
+						.getResource ( fileFullPath )
+						.toURI ( ) );
+			}
+			catch ( Exception e )
+			{
+				LOGGER.error ( e.getMessage ( ) );
+			}
+	
+			return output;
+		}
+	}
+```
 
 <br>
 
@@ -271,5 +297,40 @@ We declare our TableDTO :
 
 <br>
 
-Then in the .docx output after replace our ${EXAMPLE} we get this result:   
+Then in the .docx output after replace our ${EXAMPLE} we get this result :   
 ![Captura](https://github.com/ernesro/Urbonas_Ernestas_BikeStores/assets/98971981/1dcec841-5f88-4408-bd0c-975a111e9999)
+
+<br>
+
+### TableDTO Varaible
+
+We can use TableDTO to insert a table.
+This is the class :
+
+```java
+	@Getter
+	@Setter
+	@Builder
+	public class DocumentDTO
+	{
+		private File document;
+	
+		@Builder.Default
+		private final Map < String, Object > variables = new HashMap <> ( );
+	}
+```
+
+<br>
+
+Then we declare the DocumentDTO : 
+
+```java
+	DocumentDTO EXAMPLE = DocumentDTO.builder ( )
+					.document ( FileUtils.loadFileFromResources ( "./templateResources/document.docx" ) )
+					.variables ( null )
+					.build ( );
+```
+
+Then in the .docx output after replace our ${EXAMPLE} all the content of `document.docx` will be inserted in the variable.
+
+<br>
