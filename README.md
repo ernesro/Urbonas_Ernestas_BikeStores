@@ -182,6 +182,7 @@ This is the ListDTO Class :
 <br>
 
 We declare our ListDTO :
+We only need a `List` of `String` where each element of the list is a line in the `.docx`
 
 ```java
 	List < String > exampleList = new ArrayList <> ( );
@@ -227,6 +228,7 @@ This is the class :
 <br>
 
 We declare our ListDTO :
+We only need two `Strings`, the header and the text.
 
 ```java
 	private String headerExample = "TITLE EXAMPLE";
@@ -277,6 +279,8 @@ This is the class :
 <br>
 
 We declare our TableDTO :
+We need a list of strings containing the headers and a 2-dimensional array specifying the columns and rows of the table  
+and the contents of these cells.
 
 ```java
 	List < String > headers = new ArrayList <> ( );
@@ -328,15 +332,36 @@ This is the class :
 <br>
 
 Then we declare the DocumentDTO : 
+We need a `File object` of the template and a `Map` containg the `name of the varible as a String` and the `DTO object as an Object`
+
 
 ```java
+	String example = "HELLO";
+
+	private TableDTO exampleTable = TableDTO.builder ( )		// This is the previous example of table
+					.headers ( headers )
+					.headerPosition ( HeaderPosition.TOP )
+					.data ( data )
+					.build ( );
+
+	private ListDTO exampleList = ListDTO.builder ( )		// This is the previous example of list
+					.lines ( exampleList )
+					.build ( );
+
+	private Map < String, Object > variables = new HashMap <> ( );	// Put the DTOs in the map
+	variables.put("EXAMPLE", example);
+	variables.put("EXAMPLE_TABLE", example);
+	variables.put("EXAMPLE_LIST", example);
+
 	DocumentDTO EXAMPLE = DocumentDTO.builder ( )
 					.document ( FileUtils.loadFileFromResources ( "./templateResources/document.docx" ) )
-					.variables ( null )
+					.variables ( variables )
 					.build ( );
 ```
+> [!CAUTION]
+> If our `ListDTO` in the `DocumentDTO` is named `exampleList`, in the `.docx file` must be `${EXAMPLE_LIST}` or `${EXAMPLELIST}`. And in the `Map` the string containing the name of the varible must be like `EXAMPLE_LIST` or `EXAMPLELIST`.
 
-Then in the .docx output after replace our `${EXAMPLE}` all the content of `document.docx` will be inserted in the variable.
+Then in the .docx output our `${EXAMPLE}`will be replaced with all the content of `document.docx` and all the `document.docx` variables will be replaced also with the `map` content.
 
 <br>
 
@@ -360,3 +385,4 @@ We declare all the DocumentDTO :
 ```
 
 Then in the .docx output after replace our `${DOCUMENT_LIST}` all the content of `document.docx` and otherDocument.docx will be inserted in the variable.
+Also this documents can have their variables, in tha case we only need to create a map with te content like in the previos example.
