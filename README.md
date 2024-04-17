@@ -125,6 +125,51 @@ You can use `String` to repalce in the .docx file.
 
 | In the Java Class  | In the .doxc File |
 | ------------- | ------------- |
-| `private String example = " Hello ! "`  | ${EXAMPLE} |
+| `private String example = " Hello! "`  | ${EXAMPLE} |
 
+
+### ListDTO Varaible
+
+You can use `ListDTO` to replace the variable for a list.
+This is the ListDTO Class : 
+
+```java
+		@Getter
+		@Setter
+		@Builder
+		public class ListDTO
+		{
+			@Builder.Default
+			private final List < String > lines = new ArrayList <> ( );
+		
+			@Builder.Default
+			private final ListStyleDTO listStyleDto = ListStyleDTO.builder ( )
+					.build ( );
+		}
+```
+
+<br>
+
+We declare our ListDTO :
+
+```java
+	List < String > exampleList = new ArrayList <> ( );
+	exampleList.add ( "Example 1" );
+	exampleList.add ( "Example 2" );
+	exampleList.add ( "Example 3" );
+	exampleList.add ( "Example 4" );
+	
+	private ListDTO example = ListDTO.builder ( )
+					.lines ( exampleList )
+					.build ( );
+```
+
+<br>
+
+Then in the .docx output after replace our ${EXAMPLE} we get this result:
+
+>	+ Example 1
+>	+ Example 2
+>   	+ Example 3
+>   	+ Example 4
 
