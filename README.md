@@ -2,11 +2,8 @@
 
 Welcome to this awesome component !!!
 
-<br>
-
 You will be able to generate and read your documents very easily.
 
-<br>
 <br>
 
 ## REPLACE ALL THE VARIBLES OF THE TEMPLATE
