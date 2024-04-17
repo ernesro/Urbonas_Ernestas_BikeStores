@@ -140,6 +140,7 @@ The result will look like this.
 > also this one 69.
 
 <br>
+<br>
 
 ## VARIABLE TYPES
 
@@ -155,6 +156,7 @@ You can use `String` to repalce in the .docx file.
 | ------------- | ------------- |
 | `private String example = " Hello! "`  | ${EXAMPLE} |
 
+<br>
 <br>
 
 ### ListDTO Varaible
@@ -203,6 +205,7 @@ Then in the .docx output after replace our ${EXAMPLE} we get this result:
 > + Example 4
 
 <br>
+<br>
 
 ### ParagraphDTO Varaible
 
@@ -239,6 +242,7 @@ Then in the .docx output after replace our ${EXAMPLE} we get this result:
 > 
 > This is a text example
 
+<br>
 <br>
 
 ### TableDTO Varaible
@@ -300,6 +304,7 @@ We declare our TableDTO :
 Then in the .docx output after replace our ${EXAMPLE} we get this result :   
 ![Captura](https://github.com/ernesro/Urbonas_Ernestas_BikeStores/assets/98971981/1dcec841-5f88-4408-bd0c-975a111e9999)
 
+<br>
 <br>
 
 ### DocumentDTO Varaible
