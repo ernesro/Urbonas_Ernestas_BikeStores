@@ -40,13 +40,13 @@ You will then need a DTO **Object** that contains all the document data to repla
 In this example we have the `ExampleTemplate.java` that extends of `GenerableDocument` and looks like this :
 
 ```java
-		@Getter
-		@Setter
-		public class ExampleTemplate extends GenerableDocument
-		{
-			private String variableExample = "(I am a replaced variable)";
-			private String number = "69";
-		}
+	@Getter
+	@Setter
+	public class ExampleTemplate extends GenerableDocument
+	{
+		private String variableExample = "(I am a replaced variable)";
+		private String number = "69";
+	}
 ```
 > [!CAUTION]
 > In the **Java Class** the varible name must be in camelCase as `variableExample` while in the .docx file
@@ -200,7 +200,7 @@ This is the class :
 We declare our ListDTO :
 
 ```java
-	private String headerExample = "Title Example";
+	private String headerExample = "TITLE EXAMPLE";
 	private String textExample = "This a a text example";
 	private ParagraphDTO example =  ParagraphDTO.builder().header( headerExample ).text( textExample ).build();
 ```
@@ -213,4 +213,63 @@ Then in the .docx output after replace our ${EXAMPLE} we get this result:
 > 
 > This is a text example
 
+<br>
+
+### TableDTO Varaible
+
+We can use TableDTO to insert a table.
+This is the class :
+
+```java
+	@Getter
+	@Setter
+	@Builder
+	public class TableDTO
+	{
+		@Builder.Default
+		private final List < String > headers = new ArrayList <> ( );
+	
+		@Builder.Default
+		private HeaderPosition headerPosition = HeaderPosition.TOP;
+	
+		@Builder.Default
+		private final String[ ][ ] data = new String[0][0];
+	
+		@Builder.Default
+		private TableStyleDTO styles = TableStyleDTO.builder ( )
+				.build ( );
+	}
+```
+
+> [!NOTE]
+> **HeaderPosition** is an enum and can be TOP or LEFT depending on your table.
+
+<br>
+
+We declare our TableDTO :
+
+```java
+	List < String > headers = new ArrayList <> ( );
+	headers.add ( "HEADER 1" );
+	headers.add ( "HEADER 2" );
+	headers.add ( "HEADER 3" );
+	headers.add ( "HEADER 4" );
+
+	String[ ][ ] data = new String[2][4];
+	String[ ] data1 = { "Numbers", "11", "222", "3333" };
+	data[0] = data1;
+
+	String[ ] data2 = { "Letters", "AA", "BBB", "CCCC" };
+	data[1] = data2;
+
+	private TableDTO example = TableDTO.builder ( )
+					.headers ( headers )
+					.headerPosition ( HeaderPosition.TOP )
+					.data ( data )
+					.build ( );
+```
+
+<br>
+
+Then in the .docx output after replace our ${EXAMPLE} we get this result:   
 
