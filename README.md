@@ -11,8 +11,6 @@ You will be able to generate and read your documents very easily.
 
 ## REPLACE ALL THE VARIBLES OF THE TEMPLATE
 
-<br>
-
 ### THE TEMPLATE
 
 <br>
@@ -36,7 +34,7 @@ and it looks like this :
 <br>
 
 > This is a document and I want to replace this variable ${VARIABLE_EXAMPLE} and  
-  also this one ${NUMBER}.
+> also this one ${NUMBER}.
 
 <br>
 <br>
@@ -49,17 +47,14 @@ In this example we have the `ExampleTemplate.java` that extends of `GenerableDoc
 		@Setter
 		public class ExampleTemplate extends GenerableDocument
 		{
-			private String variableExample = "(I am a replaced variable) ";
-			private Integer number = 69;
+			private String variableExample = "(I am a replaced variable)";
+			private String number = "69";
 		}
 ```
-
-
 > [!CAUTION]
 > In the **Java Class** the varible name must be in camelCase as `variableExample` while in the .docx file
 > should look like `${VARIABLE_EXAMPLE}`, otherwise it doesn't work.
 
-<br>
 <br>
 
 With this two items we are ready.  
@@ -92,21 +87,33 @@ Then we need a **File** object with the current template.
 ```java
 	File templateFile = FileUtils.loadFileFromResources ( "/templates/exampleDoc.docx" );
 ```
+
 In this case our template is located in a folder called templates within the project resources folder.
 
 <br>
 
-Then we need the an output folder with an output empty file, in this case this will be the path with the empty file.
+Then we need an output folder with an output empty file, in this case this will be the path with the empty file.
 
 ```java
-	private String outputPath = "src/main/resources/templateResources/exampleDoc_output.docx";
+	private String outputPath = "src/main/resources/templateOutput/exampleDoc_output.docx";
 ```
+
 <br>
 
 Finally we call the writeFile method from Docx Document Service and pass in parameters the `templateFile`, `outputPath` and `exampleDto`.
 This method will return an `Optional` of `File`.
+
 ```java
 	Optional < File > output = service.writeFile ( templateFile, outputPath, exampleDto );
 ```
-		
 
+It generates the final document with the replaced variables and in the `Optional` we have the `File` object of the **output document**.
+
+<br>
+
+The result will look like this.
+
+> This is a document and I want to replace this variable (I am a replaced variable) and  
+> also this one 69.
+
+<br>
