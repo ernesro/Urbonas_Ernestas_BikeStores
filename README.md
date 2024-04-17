@@ -220,7 +220,6 @@ This is the class :
 	public class ParagraphDTO
 	{
 		private String header;
-	
 		private String text;
 	}
 ```
