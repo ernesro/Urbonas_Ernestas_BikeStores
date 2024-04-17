@@ -114,3 +114,17 @@ The result will look like this.
 > also this one 69.
 
 <br>
+
+## VARIABLE TYPES
+
+In your class that extends GenerableDocument you can use all of these variables.
+
+### String Variable
+
+You can use `String` to repalce in the .docx file.
+
+| In the Java Class  | In the .doxc File |
+| ------------- | ------------- |
+| `private String example = " Hello ! "`  | ${EXAMPLE} |
+
+
