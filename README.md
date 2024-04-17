@@ -353,7 +353,7 @@ We need a `File object` of the template and a `Map` containg the `name of the va
 	variables.put("EXAMPLE_TABLE", exampleTable);
 	variables.put("LIST_DTO", listDto);
 
-	DocumentDTO EXAMPLE = DocumentDTO.builder ( )
+	DocumentDTO example = DocumentDTO.builder ( )
 					.document ( FileUtils.loadFileFromResources ( "./templateResources/document.docx" ) )
 					.variables ( variables )
 					.build ( );
