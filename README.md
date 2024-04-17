@@ -50,7 +50,7 @@ In this example we have the `ExampleTemplate.java` that extends of `GenerableDoc
 ```
 > [!CAUTION]
 > In the **Java Class** the varible name must be in camelCase as `variableExample` while in the .docx file
-> should look like `${VARIABLE_EXAMPLE}`, otherwise it doesn't work.
+> should look like `${VARIABLE_EXAMPLE}` or `${VARIABLEEXAMPLE}`, otherwise it doesn't work.
 
 <br>
 
@@ -302,7 +302,7 @@ Then in the .docx output after replace our ${EXAMPLE} we get this result :
 
 <br>
 
-### TableDTO Varaible
+### DocumentDTO Varaible
 
 We can use TableDTO to insert a table.
 This is the class :
@@ -331,6 +331,27 @@ Then we declare the DocumentDTO :
 					.build ( );
 ```
 
-Then in the .docx output after replace our ${EXAMPLE} all the content of `document.docx` will be inserted in the variable.
+Then in the .docx output after replace our `${EXAMPLE}` all the content of `document.docx` will be inserted in the variable.
 
 <br>
+
+You can also insert a `list` of `DocumentDTO`,
+We declare all the DocumentDTO : 
+
+```java
+	DocumentDTO example1 = DocumentDTO.builder ( )
+					.document ( FileUtils.loadFileFromResources ( "./templateResources/document.docx" ) )
+					.variables ( null )
+					.build ( );
+
+	DocumentDTO example2 = DocumentDTO.builder ( )
+					.document ( FileUtils.loadFileFromResources ( "./templateResources/otherDocument.docx" ) )
+					.variables ( null )
+					.build ( );
+
+	List < DocumentDTO > documentList = new ArrayList <> ( );
+	output.add ( example1 );
+	output.add ( example2 );
+```
+
+Then in the .docx output after replace our `${DOCUMENT_LIST}` all the content of `document.docx` and otherDocument.docx will be inserted in the variable.
