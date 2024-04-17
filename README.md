@@ -42,7 +42,7 @@ and it looks like this :
 <br>
 
 You will then need a DTO **Object** that contains all the document data to replace in the template.  
-In this example we have the `ExampleTemplate.java` and looks like this :
+In this example we have the `ExampleTemplate.java` that extends of `GenerableDocument` and looks like this :
 
 ```java
 		@Getter
@@ -79,11 +79,34 @@ To replace our variables we need the `DocxDocumentService`.
 ```
 <br>
 
+We initialize the class that contains the data.
+
+```java
+	private ExampleTemplate exampleDto = new ExampleTemplate ( );
+```
+
+<br>
+
 Then we need a **File** object with the current template.
 
 ```java
 	File templateFile = FileUtils.loadFileFromResources ( "/templates/exampleDoc.docx" );
 ```
 In this case our template is located in a folder called templates within the project resources folder.
+
+<br>
+
+Then we need the an output folder with an output empty file, in this case this will be the path with the empty file.
+
+```java
+	private String outputPath = "src/main/resources/templateResources/exampleDoc_output.docx";
+```
+<br>
+
+Finally we call the writeFile method from Docx Document Service and pass in parameters the `templateFile`, `outputPath` and `exampleDto`.
+This method will return an `Optional` of `File`.
+```java
+	Optional < File > output = service.writeFile ( templateFile, outputPath, exampleDto );
+```
 		
 
