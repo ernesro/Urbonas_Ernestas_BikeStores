@@ -25,7 +25,7 @@ The variables in the document should be like this :
 <br>
 
 > [!CAUTION]
-> The document must have only the **.docx** extension, or it will not work
+> The document must have only the **.docx** extension, or it will not work.
 
 <br>
 <br>
@@ -39,40 +39,6 @@ and it looks like this :
   also this one ${NUMBER}.
 
 <br>
-
-You can consult all the types of variables that you can replace in this table.
-
-<table>
-  <tr>
-    <th> In the Java Class </th>
-    <th> In the Document .docx </th>
-  </tr>
-  <tr>
-    <td> 
-    	```java
-	    	private string example_String = "Example";
-     	```
-    </td>
-    <td> ${EXAMPLE_STRING} </td>
-  </tr>
-  <tr>
-    <td>Fila 2, Celda 1</td>
-    <td>Fila 2, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 3, Celda 1</td>
-    <td>Fila 3, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 4, Celda 1</td>
-    <td>Fila 4, Celda 2</td>
-  </tr>
-  <tr>
-    <td>Fila 5, Celda 1</td>
-    <td>Fila 5, Celda 2</td>
-  </tr>
-</table>
-
 <br>
 
 You will then need a DTO **Object** that contains all the document data to replace in the template.  
@@ -83,15 +49,17 @@ In this example we have the `ExampleTemplate.java` and looks like this :
 		@Setter
 		public class ExampleTemplate extends GenerableDocument
 		{
-			private String variable_example = "(I am a replaced variable) ";
+			private String variableExample = "(I am a replaced variable) ";
 			private Integer number = 69;
 		}
 ```
 
+
+> [!CAUTION]
+> In the **Java Class** the varible name must be in camelCase as `variableExample` while in the .docx file
+> should look like `${VARIABLE_EXAMPLE}`, otherwise it doesn't work.
+
 <br>
-
-You can consult all the 
-
 <br>
 
 With this two items we are ready.  
@@ -103,8 +71,19 @@ With this two items we are ready.
 
 <br>
 
-To replace our variables 
+To replace our variables we need the `DocxDocumentService`.
 
+```java
+	@Autowired
+	private DocxDocumentService service;
+```
+<br>
 
+Then we need a **File** object with the current template.
+
+```java
+	File templateFile = FileUtils.loadFileFromResources ( "/templates/exampleDoc.docx" );
+```
+In this case our template is located in a folder called templates within the project resources folder.
 		
 
