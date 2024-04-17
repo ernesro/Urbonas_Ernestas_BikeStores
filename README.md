@@ -119,6 +119,8 @@ The result will look like this.
 
 In your class that extends GenerableDocument you can use all of these variables.
 
+<br>
+
 ### String Variable
 
 You can use `String` to repalce in the .docx file.
@@ -127,6 +129,7 @@ You can use `String` to repalce in the .docx file.
 | ------------- | ------------- |
 | `private String example = " Hello! "`  | ${EXAMPLE} |
 
+<br>
 
 ### ListDTO Varaible
 
@@ -168,8 +171,43 @@ We declare our ListDTO :
 
 Then in the .docx output after replace our ${EXAMPLE} we get this result:
 
->	+ Example 1
->	+ Example 2
 > + Example 1
-> + Example 1
+> + Example 2
+> + Example 3
+> + Example 4
 
+<br>
+
+### ParagraphDTO Varaible
+
+We can use ParagraphDTO to insert a paragraph.
+This is the class :
+
+```java
+	@Getter
+	@Setter
+	@Builder
+	public class ParagraphDTO
+	{
+		private String header;
+	
+		private String text;
+	}
+```
+
+<br>
+
+We declare our ListDTO :
+
+```java
+	private String headerExample = "Title Example";
+	private String textExample = "This a a text example";
+	private ParagraphDTO example =  ParagraphDTO.builder().header( headerExample ).text( textExample ).build();
+```
+
+<br>
+
+Then in the .docx output after replace our ${EXAMPLE} we get this result:
+
+> **Title Example**
+> This a a text example
