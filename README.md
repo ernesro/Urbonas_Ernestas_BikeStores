@@ -272,4 +272,4 @@ We declare our TableDTO :
 <br>
 
 Then in the .docx output after replace our ${EXAMPLE} we get this result:   
-
+![Captura](https://github.com/ernesro/Urbonas_Ernestas_BikeStores/assets/98971981/1dcec841-5f88-4408-bd0c-975a111e9999)
